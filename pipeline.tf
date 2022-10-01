@@ -4,7 +4,7 @@ resource "aws_codepipeline" "codepipeline" {
 
   artifact_store {
     location = aws_s3_bucket.artifact_store.bucket
-    type      = "S3"
+    type     = "S3"
   }
 
   stage {
@@ -14,14 +14,14 @@ resource "aws_codepipeline" "codepipeline" {
       name             = "Source"
       category         = "Source"
       owner            = "AWS"
-      provider         = "CodeStarSourceConnection"
+      provider         = "S3"
       version          = "1"
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn    = aws_codestarconnections_connection.connection.arn
-        FullRepositoryId = "porrige51122/Pond"
-        BranchName       = "master"
+        S3Bucket             = var.template_bucket_name
+        S3ObjectKey          = var.template_key
+        PollForSourceChanges = true
       }
     }
   }
@@ -44,9 +44,4 @@ resource "aws_codepipeline" "codepipeline" {
     }
   }
 
-}
-
-resource "aws_codestarconnections_connection" "connection" {
-  name          = local.common_resource_name
-  provider_type = "GitHub"
 }
