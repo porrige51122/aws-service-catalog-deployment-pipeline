@@ -17,4 +17,3 @@ jobs:
         run: |
           cfn-lint --version
           cfn-lint ./**/*.json
-          cfn-lint ./**/*.yaml

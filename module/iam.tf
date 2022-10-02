@@ -42,9 +42,23 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "Effect" : "Allow",
         "Action" : [
           "codebuild:BatchGetBuilds",
-          "codebuild:StartBuild"
+          "codebuild:StartBuild",
+          "cloudformation:ValidateTemplate"
         ],
         "Resource" : "*"
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "servicecatalog:ListProvisioningArtifacts",
+          "servicecatalog:CreateProvisioningArtifact",
+          "servicecatalog:UpdateProduct",
+          "servicecatalog:DescribeProvisioningArtifact",
+          "servicecatalog:DeleteProvisioningArtifact"
+        ],
+        "Resource" : [
+          "${var.service_catalog_product.arn}"
+        ]
       }
     ]
   })
