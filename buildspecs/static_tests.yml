@@ -1,0 +1,14 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  install:
+    runtime-versions:
+      python: latest
+    commands:
+      - pip install cfn-lint
+
+  build:
+    commands:
+      - ls -A # For any debugging
+      - cfn-lint ./**/*.template
