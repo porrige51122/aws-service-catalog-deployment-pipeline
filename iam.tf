@@ -33,15 +33,10 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         ],
         "Resource" : [
           "${aws_s3_bucket.artifact_store.arn}",
-          "${aws_s3_bucket.artifact_store.arn}/*"
+          "${aws_s3_bucket.artifact_store.arn}/*",
+          "${var.template_bucket_arn}",
+          "${var.template_bucket_arn}/*"
         ]
-      },
-      {
-        "Effect" : "Allow",
-        "Action" : [
-          "codestar-connections:UseConnection"
-        ],
-        "Resource" : "${aws_codestarconnections_connection.connection.arn}"
       },
       {
         "Effect" : "Allow",
