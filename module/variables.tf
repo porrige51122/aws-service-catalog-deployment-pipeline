@@ -9,4 +9,9 @@ variable "template_bucket" {
 variable "template_key" {
   description = "Key to the template object in s3"
   type        = string
+
+  validation {
+    condition     = endswith(var.template_key, ".zip")
+    error_message = "The template_key value must be a compressed file ending with \".zip\"."
+  }
 }
