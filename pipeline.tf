@@ -11,7 +11,7 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Source"
 
     action {
-      name             = "Source"
+      name             = "source"
       category         = "Source"
       owner            = "AWS"
       provider         = "S3"
@@ -27,19 +27,19 @@ resource "aws_codepipeline" "codepipeline" {
   }
 
   stage {
-    name = "Build"
+    name = "Test"
 
     action {
-      name             = "Build"
-      category         = "Build"
-      owner            = "AWS"
-      provider         = "CodeBuild"
-      input_artifacts  = ["source_output"]
-      output_artifacts = ["build_output"]
-      version          = "1"
+      name            = "static-analysis"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      input_artifacts = ["source_output"]
+      version         = "1"
 
       configuration = {
-        ProjectName = "test"
+        ProjectName   = aws_codebuild_project.static_tests.name
+        PrimarySource = "source_output"
       }
     }
   }

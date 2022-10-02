@@ -36,3 +36,4 @@ terraform.rc
 
 # For OSX
 .DS_Store
+*.zip

@@ -1,9 +1,15 @@
+data "archive_file" "template" {
+  type        = "zip"
+  source_file = "./cloudformation/example-ec2.template"
+  output_path = "./cloudformation/example-ec2.zip"
+}
+
 resource "aws_s3_object" "template" {
   bucket = aws_s3_bucket.template_store.bucket
-  key    = "example-ec2.template"
-  source = "./cloudformation/example-ec2.template"
+  key    = "example-ec2.zip"
+  source = data.archive_file.template.output_path
 
-  etag = filemd5("./cloudformation/example-ec2.template")
+  etag = filemd5(data.archive_file.template.output_path)
 }
 
 resource "aws_s3_bucket" "template_store" {
