@@ -11,4 +11,4 @@ phases:
   build:
     commands:
       - ls -A # For any debugging
-      - cfn-lint ./**/*.template
+      - cfn-lint ./**/*.json

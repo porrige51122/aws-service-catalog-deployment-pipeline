@@ -44,4 +44,24 @@ resource "aws_codepipeline" "codepipeline" {
     }
   }
 
+  stage {
+    name = "Deploy"
+
+    action {
+      name             = "deploy"
+      category         = "Deploy"
+      owner            = "AWS"
+      provider         = "ServiceCatalog"
+      input_artifacts  = ["source_output"]
+      output_artifacts = []
+      version          = "1"
+      configuration = {
+        "ProductId"          = var.service_catalog_product.id
+        "ProductType"        = "CLOUD_FORMATION_TEMPLATE"
+        "ProductVersionName" = "1"
+        "TemplateFilePath"   = var.template_path
+      }
+    }
+  }
+
 }
