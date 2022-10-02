@@ -1,6 +1,6 @@
 data "archive_file" "template" {
   type        = "zip"
-  source_file = "${path.module}/cloudformation/example-ec2.template"
+  source_file = "${path.module}/cloudformation/example-ec2.json"
   output_path = "${path.module}/cloudformation/example-ec2.zip"
 }
 
