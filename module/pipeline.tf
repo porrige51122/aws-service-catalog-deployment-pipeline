@@ -19,7 +19,7 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        S3Bucket             = var.template_bucket_name
+        S3Bucket             = var.template_bucket.bucket
         S3ObjectKey          = var.template_key
         PollForSourceChanges = true
       }

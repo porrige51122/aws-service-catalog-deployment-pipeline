@@ -34,8 +34,8 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "Resource" : [
           "${aws_s3_bucket.artifact_store.arn}",
           "${aws_s3_bucket.artifact_store.arn}/*",
-          "${var.template_bucket_arn}",
-          "${var.template_bucket_arn}/*"
+          "${var.template_bucket.arn}",
+          "${var.template_bucket.arn}/*"
         ]
       },
       {

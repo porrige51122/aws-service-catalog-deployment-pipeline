@@ -1,11 +1,9 @@
-variable "template_bucket_name" {
-  description = "Bucket name where the template is stored"
-  type        = string
-}
-
-variable "template_bucket_arn" {
-  description = "Bucket arn where the template is stored"
-  type        = string
+variable "template_bucket" {
+  description = "S3 Bucket resource where the template is stored"
+  type = object({
+    bucket = string
+    arn    = string
+  })
 }
 
 variable "template_key" {
