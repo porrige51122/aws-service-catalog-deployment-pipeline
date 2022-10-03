@@ -1,3 +1,11 @@
+/**
+ * ## main.tf
+ *
+ * This file deploys the module with all the resources created
+ * in the other files. Please check them out if you want to know
+ * more about this deployment
+ */
+
 module "service_catalog_deployment_pipeline" {
   # Source is relative for testing, externally use: 
   # "github.com/porrige51122/aws-service-catalog-deployment-pipeline/module"

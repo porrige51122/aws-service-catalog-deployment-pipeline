@@ -1,3 +1,13 @@
+/**
+ * ## bucket.tf
+ *
+ * This file creates a versioned, private s3 bucket with a 
+ * default name, then creates a zip file of the 
+ * cloudformation template.
+ * 
+ * Then uploads the zip file to the bucket.
+ */
+
 data "archive_file" "template" {
   type        = "zip"
   source_file = "${path.module}/cloudformation/example-ec2.json"

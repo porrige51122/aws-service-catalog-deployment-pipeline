@@ -1,3 +1,13 @@
+/**
+ *
+ * A pipeline for deploying a cloudformation template to a service catalog
+ * product.
+ *
+ * As with every piece of code on the internet. Please read through this code
+ * (especially ./iam.tf) before deploying to your own aws account.
+ * 
+ */
+
 data "aws_caller_identity" "current" {}
 
 locals {
@@ -11,5 +21,7 @@ locals {
   # user to decide if they want to enable manual approval or not.
   approval = var.manual_approval_enabled ? [local.manual_approval_url] : []
 
+  # A work around to use an "if" statement for toggling using a built in buildspec or
+  # using the one given by the user
   test_buildspec = var.custom_test_buildspec != "" ? var.custom_test_buildspec : data.local_file.static_tests_file.content
 }

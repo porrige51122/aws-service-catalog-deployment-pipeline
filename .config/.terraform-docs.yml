@@ -1,0 +1,30 @@
+formatter: "markdown table"
+
+header-from: main.tf
+
+sort:
+  by: required
+
+output:
+  file: ../README.md
+  mode: inject
+
+settings:
+  hide-empty: true
+  description: true
+
+content: |-
+  # AWS Service Catalog - Deployment Pipeline
+  ![image](https://img.shields.io/github/workflow/status/porrige51122/aws-service-catalog-deployment-pipeline/Terraform%20Format%20Check/main)
+
+  {{ .Header }}
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  {{ .Resources }}

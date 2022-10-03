@@ -1,3 +1,9 @@
+/**
+ * ## pipeline_test_stage.tf
+ *
+ * Codebuild stage used for testing within pipeline
+ */
+
 resource "aws_codebuild_project" "static_tests" {
   name          = "static_tests"
   description   = "Test cloudformation template statically"
