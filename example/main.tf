@@ -5,4 +5,5 @@ module "service_catalog_deployment_pipeline" {
   template_path           = basename(data.archive_file.template.source_file)
   service_catalog_product = aws_servicecatalog_product.template
   manual_approval_enabled = true
+  custom_test_buildspec   = data.local_file.buildspec_file.content
 }

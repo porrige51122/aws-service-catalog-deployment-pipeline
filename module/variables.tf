@@ -23,8 +23,8 @@ variable "template_path" {
   type        = string
 
   validation {
-    condition     = endswith(var.template_path, ".yaml") || endswith(var.template_path, ".json")
-    error_message = "The template_key value must be a compressed file ending with \".yaml\" or \".json\" ."
+    condition     = endswith(var.template_path, ".yml") ||endswith(var.template_path, ".yaml") || endswith(var.template_path, ".json")
+    error_message = "The template_key value must be a compressed file ending with \".yml\", \".yaml\" or \".json\" ."
   }
 }
 
@@ -52,4 +52,10 @@ variable "manual_approval_url" {
   description = "(Ignore if manual approval is disabled) The url you want to provide to the user as part of the approval request"
   type        = string
   default     = ""
+}
+
+variable "custom_test_buildspec" {
+  description = "Custom buildspec for the codebuild container."
+  type = string
+  default = ""
 }
