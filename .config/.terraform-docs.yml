@@ -2,6 +2,9 @@ formatter: "markdown table"
 
 header-from: main.tf
 
+sort:
+  by: required
+
 output:
   file: ../README.md
   mode: inject
@@ -9,3 +12,16 @@ output:
 settings:
   hide-empty: true
   description: true
+
+content: |-
+  {{ .Header }}
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  {{ .Resources }}
