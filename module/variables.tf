@@ -36,14 +36,20 @@ variable "service_catalog_product" {
   })
 }
 
+variable "manual_approval_enabled" {
+  description = "Enable manual approval within the pipeline stages."
+  type        = bool
+  default     = false
+}
+
 variable "manual_approval_comments" {
-  description = "The comments displayed to the user when manual approval is needed"
+  description = "(Ignore if manual approval is disabled) The comments displayed to the user when manual approval is needed"
   type        = string
   default     = "A review is needed for deploying this service catalog product"
 }
 
 variable "manual_approval_url" {
-  description = "The url you want to provide to the user as part of the approval request"
+  description = "(Ignore if manual approval is disabled) The url you want to provide to the user as part of the approval request"
   type        = string
   default     = ""
 }
