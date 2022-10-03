@@ -1,9 +1,8 @@
 variable "template_bucket" {
   description = "S3 Bucket resource where the template is stored"
   type = object({
-    arn                = string
-    bucket             = string
-    bucket_domain_name = string
+    arn    = string
+    bucket = string
   })
 }
 
