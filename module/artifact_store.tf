@@ -1,3 +1,9 @@
+/**
+ * ## artifact_store.tf
+ *
+ * Creates an artifact S3 bucket for the pipeline.
+ */
+
 resource "aws_s3_bucket" "artifact_store" {
   bucket        = local.common_resource_name
   force_destroy = true

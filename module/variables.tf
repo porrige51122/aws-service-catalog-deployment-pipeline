@@ -1,3 +1,11 @@
+/**
+ * ## variables.tf
+ *
+ * Generic varibles taking in a selection of variables for use within the
+ * module.
+ *
+ */
+
 variable "template_bucket" {
   description = "S3 Bucket resource where the template is stored"
   type = object({

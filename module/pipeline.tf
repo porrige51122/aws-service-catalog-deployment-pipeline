@@ -1,3 +1,11 @@
+/**
+ * ## pipeline.tf
+ *
+ * Codepipeline which pulls from S3, tests the template, optional manual
+ * approval, then deploys to a service catalog product.
+ *
+ */
+
 resource "aws_codepipeline" "codepipeline" {
   name     = "service-catalog-pipeline"
   role_arn = aws_iam_role.codepipeline_role.arn

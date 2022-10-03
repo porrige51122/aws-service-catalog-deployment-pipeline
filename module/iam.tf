@@ -1,3 +1,19 @@
+/**
+ * ## iam.tf
+ *
+ * Creates 2 roles.
+ * codepipeline_role:
+ *  - Least privilege role 
+ *  - Needed for deploying to service catalog
+ *  - Needed for pulling from S3
+ *  - Needed for orchestrating containers
+ *
+ * deploy_role:
+ *  - Full access
+ *  - This is an Administrator Access role (TODO: Will need auditing in a future PR)
+ *  - Used by codebuild container to test code.
+ */
+
 resource "aws_iam_role" "codepipeline_role" {
   name = local.common_resource_name
 
