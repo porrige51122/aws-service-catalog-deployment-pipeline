@@ -1,3 +1,11 @@
+/**
+ * ## outputs.tf
+ *
+ * Simple output file listing a few helpful outputs generated
+ * by this example. Add more if you want to know more about
+ * this example.
+ */
+
 output "pipeline_name" {
   description = "The name of the pipeline created"
   value       = module.service_catalog_deployment_pipeline.pipeline_name
