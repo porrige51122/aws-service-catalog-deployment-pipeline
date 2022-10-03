@@ -18,5 +18,7 @@ locals {
   # user to decide if they want to enable manual approval or not.
   approval = var.manual_approval_enabled ? [local.manual_approval_url] : []
 
+  # A work around to use an "if" statement for toggling using a built in buildspec or
+  # using the one given by the user
   test_buildspec = var.custom_test_buildspec != "" ? var.custom_test_buildspec : data.local_file.static_tests_file.content
 }
