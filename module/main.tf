@@ -1,3 +1,10 @@
+/**
+ * # AWS Service Catalog - Deployment Pipeline
+ *
+ * A pipeline for deploying a cloudformation template to a service catalog
+ * product.
+ */
+
 data "aws_caller_identity" "current" {}
 
 locals {

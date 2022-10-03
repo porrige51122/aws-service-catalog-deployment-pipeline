@@ -1,8 +1,9 @@
+<!-- BEGIN_TF_DOCS -->
 # AWS Service Catalog - Deployment Pipeline
 
-A pipeline for deploying a cloudformation template to a service catalog product.
+A pipeline for deploying a cloudformation template to a service catalog
+product.
 
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -16,10 +17,6 @@ A pipeline for deploying a cloudformation template to a service catalog product.
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.33.0 |
 | <a name="provider_local"></a> [local](#provider\_local) | n/a |
-
-## Modules
-
-No modules.
 
 ## Resources
 
@@ -48,8 +45,4 @@ No modules.
 | <a name="input_template_bucket"></a> [template\_bucket](#input\_template\_bucket) | S3 Bucket resource where the template is stored | <pre>object({<br>    arn    = string<br>    bucket = string<br>  })</pre> | n/a | yes |
 | <a name="input_template_path"></a> [template\_path](#input\_template\_path) | Path to the file inside the zip file | `string` | n/a | yes |
 | <a name="input_template_zip_object"></a> [template\_zip\_object](#input\_template\_zip\_object) | Zipped template object in S3 | <pre>object({<br>    key = string<br>  })</pre> | n/a | yes |
-
-## Outputs
-
-No outputs.
 <!-- END_TF_DOCS -->
