@@ -19,7 +19,7 @@ resource "aws_codebuild_project" "static_tests" {
     git_clone_depth     = 0
     insecure_ssl        = false
     report_build_status = false
-    buildspec           = data.local_file.static_tests_file.content
+    buildspec           = local.test_buildspec
   }
 }
 
