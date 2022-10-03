@@ -44,18 +44,21 @@ resource "aws_codepipeline" "codepipeline" {
     }
   }
 
-  stage {
-    name = "Approval"
+  dynamic "stage" {
+    for_each = local.approval
+    content {
+      name = "Approval"
 
-    action {
-      name     = "manual-approval"
-      category = "Approval"
-      owner    = "AWS"
-      provider = "Manual"
-      version  = "1"
-      configuration = {
-        "CustomData"         = var.manual_approval_comments
-        "ExternalEntityLink" = local.manual_approval_url
+      action {
+        name     = "manual-approval"
+        category = "Approval"
+        owner    = "AWS"
+        provider = "Manual"
+        version  = "1"
+        configuration = {
+          "CustomData"         = var.manual_approval_comments
+          "ExternalEntityLink" = stage.value
+        }
       }
     }
   }

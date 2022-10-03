@@ -6,4 +6,6 @@ locals {
 
   # Automatically fill manual_approval_url with S3 Bucket URL
   manual_approval_url = var.manual_approval_url == "" ? "https://s3.console.aws.amazon.com/s3/buckets/${var.template_bucket.bucket}" : var.manual_approval_url
+
+  approval = var.manual_approval_enabled ? [local.manual_approval_url] : []
 }

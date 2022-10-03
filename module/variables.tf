@@ -36,6 +36,12 @@ variable "service_catalog_product" {
   })
 }
 
+variable "manual_approval_enabled" {
+  description = "Enable manual approval within the pipeline stages."
+  type        = bool
+  default     = false
+}
+
 variable "manual_approval_comments" {
   description = "The comments displayed to the user when manual approval is needed"
   type        = string
