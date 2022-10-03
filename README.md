@@ -1,6 +1,7 @@
 <!-- BEGIN_TF_DOCS -->
-![image](https://img.shields.io/github/workflow/status/porrige51122/aws-service-catalog-deployment-pipeline/Terraform%20Format%20Check/main)
 # AWS Service Catalog - Deployment Pipeline
+![image](https://img.shields.io/github/workflow/status/porrige51122/aws-service-catalog-deployment-pipeline/Terraform%20Format%20Check/main)
+
 
 A pipeline for deploying a cloudformation template to a service catalog
 product.
