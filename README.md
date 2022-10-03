@@ -4,20 +4,23 @@
 A pipeline for deploying a cloudformation template to a service catalog
 product.
 
+As with every piece of code on the internet. Please read through this code
+(especially ./iam.tf) before deploying to your own aws account.
+
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.33.0 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | ~> 2.2.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.33.0 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2.2.3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.33.0 |
-| <a name="provider_local"></a> [local](#provider\_local) | ~> 2.2.3 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.33.0 |
+| <a name="provider_local"></a> [local](#provider\_local) | >= 2.2.3 |
 
 ## Inputs
 
