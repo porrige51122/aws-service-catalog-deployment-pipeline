@@ -3,6 +3,10 @@
  *
  * A pipeline for deploying a cloudformation template to a service catalog
  * product.
+ *
+ * As with every piece of code on the internet. Please read through this code
+ * (especially ./iam.tf) before deploying to your own aws account.
+ * 
  */
 
 data "aws_caller_identity" "current" {}
