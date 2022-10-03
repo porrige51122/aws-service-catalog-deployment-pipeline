@@ -1,18 +1,21 @@
 variable "template_bucket" {
   description = "S3 Bucket resource where the template is stored"
   type = object({
-    arn    = string
-    bucket = string
+    arn                = string
+    bucket             = string
+    bucket_domain_name = string
   })
 }
 
-variable "template_key" {
-  description = "Key to the zipped template object in S3"
-  type        = string
+variable "template_zip_object" {
+  description = "Zipped template object in S3"
+  type = object({
+    key = string
+  })
 
   validation {
-    condition     = endswith(var.template_key, ".zip")
-    error_message = "The template_key value must be a compressed file ending with \".zip\"."
+    condition     = endswith(var.template_zip_object.key, ".zip")
+    error_message = "The template_zip_object.key value must be a compressed file ending with \".zip\"."
   }
 }
 
@@ -32,4 +35,16 @@ variable "service_catalog_product" {
     arn = string
     id  = string
   })
+}
+
+variable "manual_approval_comments" {
+  description = "The comments displayed to the user when manual approval is needed"
+  type        = string
+  default     = "A review is needed for deploying this service catalog product"
+}
+
+variable "manual_approval_url" {
+  description = "The url you want to provide to the user as part of the approval request"
+  type        = string
+  default     = ""
 }

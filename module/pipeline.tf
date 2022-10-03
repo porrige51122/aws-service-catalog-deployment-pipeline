@@ -20,7 +20,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         S3Bucket             = var.template_bucket.bucket
-        S3ObjectKey          = var.template_key
+        S3ObjectKey          = var.template_zip_object.key
         PollForSourceChanges = true
       }
     }
@@ -40,6 +40,22 @@ resource "aws_codepipeline" "codepipeline" {
       configuration = {
         ProjectName   = aws_codebuild_project.static_tests.name
         PrimarySource = "source_output"
+      }
+    }
+  }
+
+  stage {
+    name = "Approval"
+
+    action {
+      name     = "manual-approval"
+      category = "Approval"
+      owner    = "AWS"
+      provider = "Manual"
+      version  = "1"
+      configuration = {
+        "CustomData"         = var.manual_approval_comments
+        "ExternalEntityLink" = local.manual_approval_url
       }
     }
   }
