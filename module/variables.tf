@@ -23,7 +23,7 @@ variable "template_path" {
   type        = string
 
   validation {
-    condition     = endswith(var.template_path, ".yml") ||endswith(var.template_path, ".yaml") || endswith(var.template_path, ".json")
+    condition     = endswith(var.template_path, ".yml") || endswith(var.template_path, ".yaml") || endswith(var.template_path, ".json")
     error_message = "The template_key value must be a compressed file ending with \".yml\", \".yaml\" or \".json\" ."
   }
 }
@@ -56,6 +56,6 @@ variable "manual_approval_url" {
 
 variable "custom_test_buildspec" {
   description = "Custom buildspec for the codebuild container."
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
