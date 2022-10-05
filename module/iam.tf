@@ -9,13 +9,16 @@
  *  - Needed for orchestrating containers
  *
  * deploy_role:
- *  - Full access
- *  - This is an Administrator Access role (TODO: Will need auditing in a future PR)
+ *  - Access to cloudwatch logs for logging
+ *  - Pull access to artifact bucket to get template
  *  - Used by codebuild container to test code.
+ *  - If more permissions are needed, add custom permissions to the
+ *  policy returned by the module.
+ *
  */
 
 resource "aws_iam_role" "codepipeline_role" {
-  name = local.common_resource_name
+  name = "${local.common_resource_name}-pipeline-role"
 
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
@@ -32,7 +35,7 @@ resource "aws_iam_role" "codepipeline_role" {
 }
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
-  name = local.common_resource_name
+  name = "${local.common_resource_name}-pipeline-policy"
   role = aws_iam_role.codepipeline_role.id
 
   policy = jsonencode({
@@ -80,8 +83,8 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
   })
 }
 
-resource "aws_iam_role" "deploy" {
-  name = "sc-pipeline-deploy-role"
+resource "aws_iam_role" "execution_role" {
+  name = "${local.common_resource_name}-execution-role"
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -96,7 +99,35 @@ resource "aws_iam_role" "deploy" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "administrator-access" {
-  role       = aws_iam_role.deploy.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+resource "aws_iam_role_policy" "execution_policy" {
+  name = "${local.common_resource_name}-execution-policy"
+  role = aws_iam_role.execution_role.id
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "logs:CreateLogStream",
+          "logs:CreateLogGroup",
+          "logs:PutLogEvents"
+        ],
+        "Resource" : [
+          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests",
+          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests:*"
+        ]
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "s3:GetObject",
+        ],
+        "Resource" : [
+          "${aws_s3_bucket.artifact_store.arn}",
+          "${aws_s3_bucket.artifact_store.arn}/*",
+        ]
+      }
+    ]
+  })
 }

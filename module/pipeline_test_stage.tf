@@ -5,9 +5,9 @@
  */
 
 resource "aws_codebuild_project" "static_tests" {
-  name          = "static_tests"
+  name          = "${local.common_resource_name}-static_tests"
   description   = "Test cloudformation template statically"
-  service_role  = aws_iam_role.deploy.arn
+  service_role  = aws_iam_role.execution_role.arn
   build_timeout = 5
 
   artifacts {
