@@ -67,3 +67,9 @@ variable "custom_test_buildspec" {
   type        = string
   default     = ""
 }
+
+variable "tags" {
+  description = "Resource tagging"
+  type        = map(string)
+  default     = {}
+}

@@ -26,4 +26,9 @@ module "service_catalog_deployment_pipeline" {
 
   # This is a custom buildspec that you can pass in, allowing for custom tests in your pipeline
   custom_test_buildspec = data.local_file.buildspec_file.content
+
+  # Tags parameter to allow automatic tagging of resources
+  tags = {
+    "Environment" = "dev"
+  }
 }

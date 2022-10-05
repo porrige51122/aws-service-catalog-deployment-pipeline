@@ -36,6 +36,7 @@ As with every piece of code on the internet. Please read through this code
 | <a name="input_manual_approval_comments"></a> [manual\_approval\_comments](#input\_manual\_approval\_comments) | (Ignore if manual approval is disabled) The comments displayed to the user when manual approval is needed | `string` | `"A review is needed for deploying this service catalog product"` | no |
 | <a name="input_manual_approval_enabled"></a> [manual\_approval\_enabled](#input\_manual\_approval\_enabled) | Enable manual approval within the pipeline stages. | `bool` | `false` | no |
 | <a name="input_manual_approval_url"></a> [manual\_approval\_url](#input\_manual\_approval\_url) | (Ignore if manual approval is disabled) The url you want to provide to the user as part of the approval request | `string` | `""` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Resource tagging | `map(string)` | `{}` | no |
 
 ## Outputs
 
