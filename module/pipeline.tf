@@ -7,7 +7,7 @@
  */
 
 resource "aws_codepipeline" "codepipeline" {
-  name     = "service-catalog-pipeline"
+  name     = local.common_resource_name
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {

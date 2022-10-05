@@ -5,7 +5,7 @@
  */
 
 resource "aws_s3_bucket" "artifact_store" {
-  bucket        = local.common_resource_name
+  bucket        = "${local.common_resource_name}-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
 }
 
