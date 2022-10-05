@@ -41,8 +41,10 @@ As with every piece of code on the internet. Please read through this code
 
 | Name | Description |
 |------|-------------|
+| <a name="output_execution_role"></a> [execution\_role](#output\_execution\_role) | The execution role within the codebuild build stage |
 | <a name="output_pipeline_arn"></a> [pipeline\_arn](#output\_pipeline\_arn) | The arn of the pipeline created |
 | <a name="output_pipeline_name"></a> [pipeline\_name](#output\_pipeline\_name) | The name of the pipeline created |
+| <a name="output_pipeline_role"></a> [pipeline\_role](#output\_pipeline\_role) | The role used for running deployments through codepipeline |
 
 ## Resources
 
@@ -51,9 +53,9 @@ As with every piece of code on the internet. Please read through this code
 | [aws_codebuild_project.static_tests](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project) | resource |
 | [aws_codepipeline.codepipeline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codepipeline) | resource |
 | [aws_iam_role.codepipeline_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role.deploy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role.execution_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy.codepipeline_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.administrator-access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy.execution_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_s3_bucket.artifact_store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.artifact_store_acl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
