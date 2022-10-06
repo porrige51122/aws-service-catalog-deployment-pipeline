@@ -114,8 +114,8 @@ resource "aws_iam_role_policy" "execution_policy" {
           "logs:PutLogEvents"
         ],
         "Resource" : [
-          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests",
-          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests:*"
+          "arn:aws:logs:*:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests",
+          "arn:aws:logs:*:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${local.common_resource_name}-static_tests:*"
         ]
       },
       {
