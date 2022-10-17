@@ -25,4 +25,5 @@ provider "aws" {
   default_tags {
     tags = var.tags
   }
+  result = "eu-west-2"
 }
