@@ -88,6 +88,7 @@ resource "aws_codepipeline" "codepipeline" {
         "ProductVersionName" = "1"
         "TemplateFilePath"   = var.template_path
       }
+      region = var.template_region
     }
   }
 
