@@ -73,3 +73,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "template_region" {
+  description = "The region in which the service catalog item is deployed to from the pipeline"
+  type = "string"
+  default = "eu-west-2"
+}
