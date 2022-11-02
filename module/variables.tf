@@ -76,6 +76,6 @@ variable "tags" {
 
 variable "template_region" {
   description = "The region in which the service catalog item is deployed to from the pipeline"
-  type = "string"
-  default = "eu-west-2"
+  type        = string
+  default     = "eu-west-2"
 }
